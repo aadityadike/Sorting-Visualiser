@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+button {
+  outline: none;
+  border: none;
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+.bg_gradient {
+  /* ff 3.6+ */
+  background: -moz-linear-gradient(
+    179deg,
+    #3fe3ff 0%,
+    #1096b4 34%,
+    #005899 100%
+  );
+
+  /* safari 5.1+,chrome 10+ */
+  background: -webkit-linear-gradient(
+    179deg,
+    #3fe3ff 0%,
+    #1096b4 34%,
+    #005899 100%
+  );
+
+  /* opera 11.10+ */
+  background: -o-linear-gradient(179deg, #3fe3ff 0%, #1096b4 34%, #005899 100%);
+
+  /* ie 6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#005899', endColorstr='#3FE3FF', GradientType=1 );
+
+  /* ie 10+ */
+  background: -ms-linear-gradient(
+    179deg,
+    #3fe3ff 0%,
+    #1096b4 34%,
+    #005899 100%
+  );
+
+  /* global 94%+ browsers support */
+  background: linear-gradient(179deg, #3fe3ff 0%, #1096b4 34%, #005899 100%);
+}
+
+.bg_gradient-1 {
+  /* ff 3.6+ */
+  background: -moz-linear-gradient(
+    179deg,
+    #0ba1bb 0%,
+    #056075 33%,
+    #001d32 100%
+  );
+
+  /* safari 5.1+,chrome 10+ */
+  background: -webkit-linear-gradient(
+    179deg,
+    #0ba1bb 0%,
+    #056075 33%,
+    #001d32 100%
+  );
+
+  /* opera 11.10+ */
+  background: -o-linear-gradient(179deg, #0ba1bb 0%, #056075 33%, #001d32 100%);
+
+  /* ie 6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001D32', endColorstr='#0BA1BB', GradientType=1 );
+
+  /* ie 10+ */
+  background: -ms-linear-gradient(
+    179deg,
+    #0ba1bb 0%,
+    #056075 33%,
+    #001d32 100%
+  );
+
+  /* global 94%+ browsers support */
+  background: linear-gradient(179deg, #0ba1bb 0%, #056075 33%, #001d32 100%);
+}
