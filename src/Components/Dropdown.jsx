@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-const Dropdown = ({ setHeading1, setCount }) => {
+const Dropdown = ({ setHeading1, setCount, setState }) => {
     const [heading, setHeading] = useState("Customization")
 
     return (
-        <div className='text-black bg_gradient-1 translate-x-10 flex flex-col h-full w-96 py-10 px-10 fixed top-0' >
+        <div className='text-black bg_gradient-1 translate-x-10 flex flex-col h-full w-96 py-10 px-10 fixed top-0 z-10' >
             <h1 className='text-xl font-bold mb-20'>{heading}</h1>
             <div className='flex flex-col gap-10'>
                 <button className='flex flex-col items-start' onClick={(e) => {
