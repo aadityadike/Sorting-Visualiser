@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Dropdown = ({ setHeading1, setCount, setState }) => {
+const Dropdown = ({ setHeading1, setCount}) => {
     const [heading, setHeading] = useState("Customization")
 
     return (
@@ -21,7 +21,8 @@ const Dropdown = ({ setHeading1, setCount, setState }) => {
 
                 <button className='flex flex-col items-start' onClick={(e) => {
                     setHeading("Count")
-                    setCount(e.target.value)
+                    const ei = Math.round(e.target.value);
+                    setCount(ei)
                 }}>
                     <label>Count</label>
                     <select name="Count" id="count" className='w-72 h-10 rounded-md p-1'>
