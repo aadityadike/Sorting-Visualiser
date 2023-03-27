@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react"
 import Sidebar from "./Components/Sidebar"
-import Main from "./Components/Main"
+import Logic from "./Components/Logic"
 import { bblSort } from "./Components/Algorithms/bubbleSort";
 
+// generate array of elements between 10 to 100.
 function generateArrays(size, max) {
-  // generate array of elements between 10 to 100.
-  const randomArray = [...new Array(size)].map(() => Math.round(Math.random() * max));
+  const randomArray = [...new Array(size)].map(() => (Math.round(Math.random() * max)))
   // console.log(randomArray)
   return randomArray
 }
@@ -16,23 +16,38 @@ function initialState(size, max) {
     value: element,
     color: '#293451'
   }));
+  // console.log(newArr)
   return newArr
 }
 
 function App() {
-  const [heading, setHeading1] = useState("bubble sort");
+  const [heading, setHeading] = useState("bubble sort");
   const [count, setCount] = useState(10)
   const [state, setState] = useState([])
-  const s = initialState(count, 99);
+  const [algorithm, setAlgorithm] = useState()
+  const [playing, setPlaying] = useState(false)
+  const [index, setIndex] = useState(0)
+  const [history, setHistory] = useState([])
+
+
+  const store = initialState(count, 99);
   useEffect(() => {
-    setState(s)
+    setState(store)
   }, [count])
 
+  useEffect(() => {
+    if (index > 0) setState(history[index])
+  }, [index])
+
+
+  useEffect(() => {
+    console.log(history.length, index)
+  }, [index, playing])
 
   return (
     <div className="App flex bg-stone-900">
-      <Sidebar setHeading1={setHeading1} setCount={setCount} />
-      <Main heading={heading} count={count} state={state} />
+      <Sidebar setHeading={setHeading} setCount={setCount} setAlgorithm={setAlgorithm} setPlaying={setPlaying} playing={playing} />
+      <Logic heading={heading} count={count} state={state} algorithm={algorithm} />
     </div>
   )
 }

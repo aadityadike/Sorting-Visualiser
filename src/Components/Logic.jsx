@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Main = ({ heading, count, state }) => {
+const Logic = ({ heading, state}) => {
     return (
         <div className='m-10 p-10 flex flex-col bg_gradient'>
 
@@ -20,10 +20,10 @@ const Main = ({ heading, count, state }) => {
                     }} key={index}>
                     </div >
                 ))
-                }
+            }
             </div>
         </div >
     )
 }
 
-export default Main
+export default Logic
