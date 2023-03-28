@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import Sidebar from "./Components/Sidebar"
 import Logic from "./Components/Logic"
-import { bblSort } from "./Components/Algorithms/bubbleSort";
+import { bubbleSort } from "./Components/Algorithms/bubbleSort";
+// import { SelectionSort } from "./Components/Algorithms/SelectionSort";
+import { InsertionSort } from "./Components/Algorithms/InsertionSort";
 
-// generate array of elements between 10 to 100.
+
+// generate array of random elements between 10 to 100.
 function generateArrays(size, max) {
   const randomArray = [...new Array(size)].map(() => (Math.round(Math.random() * max)))
-  // console.log(randomArray)
   return randomArray
 }
 
+// Array containing objects
 function initialState(size, max) {
   let arr = generateArrays(size, max);
   let newArr = arr.map((element) => ({
@@ -20,6 +23,8 @@ function initialState(size, max) {
   return newArr
 }
 
+
+
 function App() {
   const [heading, setHeading] = useState("bubble sort");
   const [count, setCount] = useState(10)
@@ -28,25 +33,77 @@ function App() {
   const [playing, setPlaying] = useState(false)
   const [index, setIndex] = useState(0)
   const [history, setHistory] = useState([])
+  const [speed, setSpeed] = useState(300)
+  const timeOut = useRef()
 
 
+  const handleClick = () => {
+    switch (algorithm) {
+      case "Insertion sort": {
+        console.log("inside Insertion Sort")
+        setHistory(InsertionSort(state))
+        setPlaying(true)
+        break;
+      }
+      case "Bubble sort": {
+        console.log("inside Bubble Sort")
+        setHistory(bubbleSort(state))
+        setPlaying(true)
+        break;
+      }
+      // case "Selection sort": {
+      //   console.log("inside Selection Sort")
+      //   setHistory(SelectionSort(state))
+      //   setPlaying(true)
+      //   break;
+      // }
+      default: {
+        setHistory([InsertionSort(state)])
+        setPlaying(false)
+        break;
+      }
+    }
+  }
+  // when count changes the no. of bars will change.
   const store = initialState(count, 99);
   useEffect(() => {
     setState(store)
   }, [count])
 
+
   useEffect(() => {
-    if (index > 0) setState(history[index])
+    setIndex(0)
+    setPlaying(false)
+    clearTimeout(timeOut.current)
+    setHistory([])
+    setState(initialState(count, 99))
+    setHistory([])
+  }, [count])
+
+
+  useEffect(() => {
+    if (index > 0)
+      setState(history[index])
   }, [index])
 
 
   useEffect(() => {
-    console.log(history.length, index)
+    if (playing && index < history.length - 1) {
+      clearTimeout(timeOut.current)
+      timeOut.current = setTimeout(() => {
+        setIndex((index) => index + 1)
+      }, speed)
+    }
+    else {
+      if (index >= history.length)
+        setPlaying(false)
+    }
   }, [index, playing])
+
 
   return (
     <div className="App flex bg-stone-900">
-      <Sidebar setHeading={setHeading} setCount={setCount} setAlgorithm={setAlgorithm} setPlaying={setPlaying} playing={playing} />
+      <Sidebar setHeading={setHeading} setCount={setCount} setAlgorithm={setAlgorithm} setPlaying={setPlaying} playing={playing} setHistory={setHistory} setSpeed={setSpeed} handleClick={handleClick} />
       <Logic heading={heading} count={count} state={state} algorithm={algorithm} />
     </div>
   )

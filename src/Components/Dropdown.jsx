@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
-
-const Dropdown = ({ setHeading, setCount, setAlgorithm }) => {
+const Dropdown = ({ setHeading, setCount, setAlgorithm, setSpeed }) => {
     const [title, setTitle] = useState("Customization")
 
     function handleChange(event) {
@@ -36,14 +35,15 @@ const Dropdown = ({ setHeading, setCount, setAlgorithm }) => {
                     </select>
                 </button>
 
-                <button className='flex flex-col items-start' onClick={() => {
+                <button className='flex flex-col items-start' onClick={(e) => {
                     setTitle("Speed")
+                    setSpeed(Math.round(e.target.value))
                 }}>
                     <label>Speed</label>
                     <select name="Speed" id="speed" className='w-72 h-10 rounded-md p-1'>
-                        <option value="Normal">Normal</option>
-                        <option value="Fast">Fast</option>
-                        <option value="Slow">Slow</option>
+                        <option value="200">Normal</option>
+                        <option value="400">Fast</option>
+                        <option value="500">Slow</option>
                     </select>
                 </button>
 

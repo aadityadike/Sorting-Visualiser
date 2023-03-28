@@ -1,4 +1,4 @@
-export const bblSort = (state) => {
+export const bubbleSort = (state) => {
     let arr = state.map((obj) => obj)
     let history = []
 

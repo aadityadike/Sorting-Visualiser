@@ -1,22 +1,87 @@
-// Javascript program for insertion sort
 
-// Function to sort an array using insertion sort
-function insertionSort(arr, n)
-{
-	let i, key, j;
-	for (i = 1; i < n; i++)
-	{
-		key = arr[i];
-		j = i - 1;
+export const InsertionSort = (state) => {
+	const arr = state.map((objArr) => objArr);
+	const history = [];
 
-		/* Move elements of arr[0..i-1], that are
-		greater than key, to one position ahead
-		of their current position */
-		while (j >= 0 && arr[j] > key)
-		{
-			arr[j + 1] = arr[j];
-			j = j - 1;
+	// push initial state
+	history.push(
+		arr.map((a) => {
+			return { ...a };
+		})
+	)
+
+	for (let i = 1; i < arr.length; i++) {
+		// make white compare 
+		let j = i;
+
+		while (j > 0) {
+			// compare
+			arr[j].color = "white";
+			arr[j - 1].color = "white";
+
+			history.push(
+				arr.map((a) => {
+					return { ...a };
+				})
+			)
+
+			if (arr[j].value < arr[j - 1].value) {
+				// red
+				arr[j].color = "#DC143C";
+				arr[j - 1].color = "#DC143C";
+
+				history.push(
+					arr.map((a) => {
+						return { ...a };
+					})
+				)
+				// now swap
+				let temp = arr[j];
+				arr[j] = arr[j - 1];
+				arr[j - 1] = temp;
+
+
+			} else {
+				// green
+				arr[j].color = "#32CD32";
+				arr[j - 1].color = "#32CD32";
+
+				history.push(
+					arr.map((a) => {
+						return { ...a };
+					})
+				)
+			}
+
+			// make it blue
+			arr[j].color = "#293451";
+			arr[j - 1].color = "#293451";
+
+			history.push(
+				arr.map((a) => {
+					return { ...a };
+				})
+			);
+			j--;
 		}
-		arr[j + 1] = key;
 	}
+
+
+	/*  Evert thing done just show 2nd last step as green and last step as default color  */
+
+
+	// push sorted aray with all green color
+	history.push(
+		arr.map((a) => {
+			return { ...a, color: "#32CD32" };
+		})
+	)
+	// push with default color
+	history.push(
+		arr.map((a) => {
+			return { ...a };
+		})
+	)
+
+	return history;
 }
