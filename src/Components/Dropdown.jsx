@@ -3,27 +3,25 @@ import React, { useState } from 'react'
 const Dropdown = ({ setHeading, setCount, setAlgorithm, setSpeed }) => {
     const [title, setTitle] = useState("Customization")
 
-    function handleChange(event) {
-        setAlgorithm(event.target.value)
-    }
-
     return (
         <div className='text-black bg_gradient-1 translate-x-10 flex flex-col h-full w-96 py-10 px-10 fixed top-0 z-10' >
             <h1 className='text-xl font-bold mb-20'>{title}</h1>
             <div className='flex flex-col gap-10'>
-                <button className='flex flex-col items-start' onChange={handleChange} onClick={(e) => {
+
+                <button className='flex flex-col items-start cursor-pointer' onChange={(e) => {
                     setTitle("Algorithms")
                     setHeading(e.target.value)
+                    setAlgorithm(e.target.value)
                 }}>
                     <label>Algorithms</label>
                     <select name="Algorithms" id="algorithms" className='w-72 h-10 rounded-md p-1'>
                         <option value="Bubble sort">Bubble Sort</option>
                         <option value="Insertion sort">Insertion Sort</option>
-                        <option value="Selection sort">Selection Sort</option>
+                        <option value="Merge sort">Merge Sort</option>
                     </select>
                 </button>
 
-                <button className='flex flex-col items-start' onClick={(e) => {
+                <button className='flex flex-col items-start cursor-pointer' onChange={(e) => {
                     setTitle("Count")
                     setCount(Math.round(e.target.value))
                 }}>
@@ -35,7 +33,7 @@ const Dropdown = ({ setHeading, setCount, setAlgorithm, setSpeed }) => {
                     </select>
                 </button>
 
-                <button className='flex flex-col items-start' onClick={(e) => {
+                <button className='flex flex-col items-start cursor-pointer' onChange={(e) => {
                     setTitle("Speed")
                     setSpeed(Math.round(e.target.value))
                 }}>
@@ -47,7 +45,7 @@ const Dropdown = ({ setHeading, setCount, setAlgorithm, setSpeed }) => {
                     </select>
                 </button>
 
-                <button className='flex flex-col items-start' onClick={() => {
+                <button className='flex flex-col items-start cursor-pointer' onChange={() => {
                     setTitle("Animation")
                 }}>
                     <label>Animation</label>

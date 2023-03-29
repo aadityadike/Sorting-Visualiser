@@ -1,4 +1,4 @@
-export const mergeSort = (state) =>{
+export const MergeSort = (state) =>{
     console.log("merge sort called");
     let history = [];
     const arr = state.map((objarr) => objarr);

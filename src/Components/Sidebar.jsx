@@ -3,7 +3,7 @@ import Dropdown from './Dropdown'
 import { FaPlay } from 'react-icons/fa'
 import { TfiMenuAlt } from 'react-icons/tfi'
 
-const Sidebar = ({ setHeading, setCount, algorithm, setAlgorithm, handleClick, setSpeed }) => {
+const Sidebar = ({ setHeading, setCount, setAlgorithm, handleClick, setSpeed }) => {
     const [open, setOpen] = useState(false);
     return (
         <>
@@ -13,7 +13,7 @@ const Sidebar = ({ setHeading, setCount, algorithm, setAlgorithm, handleClick, s
                 </li>
                 <li className='flex flex-col'>
                     <a href="#" onClick={() => { setOpen(!open) }}>{<TfiMenuAlt />}</a>
-                    {open && <Dropdown setHeading={setHeading} setCount={setCount} setAlgorithm={setAlgorithm} setSpeed={setSpeed} />}
+                    {open && <Dropdown {...{ setHeading, setCount, setAlgorithm, setSpeed }} />}
                 </li>
             </ul>
         </>
