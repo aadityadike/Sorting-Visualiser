@@ -12,7 +12,7 @@ function generateArrays(size, max) {
     return randomArray
 }
 
-// Array containing objects
+// put Objects inside that random array that we created recently via generateArrays function.
 function initialState(size, max) {
     let arr = generateArrays(size, max);
     let newArr = arr.map((element) => ({

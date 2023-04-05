@@ -10,6 +10,7 @@ export const InsertionSort = (state) => {
 		})
 	)
 
+
 	for (let i = 1; i < arr.length; i++) {
 		// make white compare 
 		let j = i;
