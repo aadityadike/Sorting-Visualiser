@@ -35,6 +35,7 @@ export const InsertionSort = (state) => {
 						return { ...a };
 					})
 				)
+
 				// now swap
 				let temp = arr[j];
 				arr[j] = arr[j - 1];

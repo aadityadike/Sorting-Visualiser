@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Dropdown from './Dropdown'
 import { FaPlay } from 'react-icons/fa'
 import { TfiMenuAlt } from 'react-icons/tfi'
+import { SideBar_Context_Api } from '../Sidebar_Context'
 
-const Sidebar = ({ setHeading, setCount, setAlgorithm, handleClick, setSpeed }) => {
+const Sidebar = () => {
     const [open, setOpen] = useState(false);
+    const { setHeading, setAlgorithm, setCount, setSpeed, handleClick } = useContext(SideBar_Context_Api);
     return (
         <>
             <ul className='py-10 px-10 bg_gradient flex flex-col'>

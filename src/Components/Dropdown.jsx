@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from "react"
 
 const Dropdown = ({ setHeading, setCount, setAlgorithm, setSpeed }) => {
     const [title, setTitle] = useState("Customization")
@@ -39,9 +39,9 @@ const Dropdown = ({ setHeading, setCount, setAlgorithm, setSpeed }) => {
                 }}>
                     <label>Speed</label>
                     <select name="Speed" id="speed" className='w-72 h-10 rounded-md p-1'>
-                        <option value="200">Normal</option>
-                        <option value="400">Fast</option>
-                        <option value="500">Slow</option>
+                        <option value="200">slow</option>
+                        <option value="400">fast</option>
+                        <option value="500">superFast</option>
                     </select>
                 </button>
 

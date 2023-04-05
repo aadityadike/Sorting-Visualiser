@@ -1,6 +1,8 @@
-import React from 'react'
+import { Logic_Context_Api } from "../Sidebar_Context"
+import { useContext } from 'react';
 
-const Logic = ({ heading, state}) => {
+const Logic = () => {
+    const { state, heading } = useContext(Logic_Context_Api)
     return (
         <div className='m-10 p-10 flex flex-col bg_gradient'>
 
@@ -20,7 +22,7 @@ const Logic = ({ heading, state}) => {
                     }} key={index}>
                     </div >
                 ))
-            }
+                }
             </div>
         </div >
     )
